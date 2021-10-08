@@ -1,0 +1,4 @@
+main.d
+*.exe
+*.obj
+.dub
