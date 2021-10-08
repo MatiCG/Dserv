@@ -1,3 +1,5 @@
+module protocol.listener;
+
 import std.stdio : writeln, writefln;
 import std.socket : InternetAddress, Socket, SocketException, SocketSet, TcpSocket;
 import std.conv : ConvException, ConvOverflowException, to;
@@ -34,10 +36,10 @@ class Listener
 
         }
     }
-}
 
-
-void main()
-{
-    Listener list = new Listener(6060, "0.0.0.0");
+    unittest
+    {
+        auto listener = new Listener(6060, "0.0.0.0");
+        assert(listener.listener.isAlive);
+    }
 }
