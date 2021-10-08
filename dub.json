@@ -1,0 +1,4 @@
+{
+	"name": "dserv",
+    "description": "A simple server implementation in D"
+}
