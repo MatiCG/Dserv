@@ -1,4 +1,5 @@
 {
 	"name": "dserv",
-    "description": "A simple server implementation in D"
+    "description": "A simple server implementation in D",
+    "authors": ["Matias Castro Guzman"]
 }

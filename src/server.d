@@ -5,6 +5,7 @@ import std.socket : InternetAddress, Socket, SocketException, SocketSet, TcpSock
 import std.conv : ConvException, ConvOverflowException, to;
 import std.exception : assertThrown;
 import std.algorithm.mutation : remove;
+import dserv.worker;
 
 class Server
 {
@@ -43,9 +44,10 @@ class Server
 
                 if (datLength == Socket.ERROR)
                     writeln("Connection error.");
-				else if (datLength != 0)
-				//Place worker here
+				else if (datLength != 0) {
+					auto worker = new Worker(buf).start();
 					continue;
+				}
 				else {
 					try {
 						writefln("Connection from %s closed", this.reads[i].remoteAddress().toString());
