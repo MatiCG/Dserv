@@ -1,4 +1,4 @@
-module src.mathHelper;
+module dserv.mathHelper;
 
 class MathHelper
 {
