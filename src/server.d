@@ -45,7 +45,7 @@ class Server
                 if (datLength == Socket.ERROR)
                     writeln("Connection error.");
 				else if (datLength != 0) {
-					auto worker = new Worker(buf).start();
+					auto worker = new Worker(buf, reads[i]).start();
 					continue;
 				}
 				else {

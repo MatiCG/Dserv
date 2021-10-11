@@ -6,17 +6,20 @@ import std.array : split;
 import std.algorithm.mutation : remove;
 import dserv.mathHelper;
 import std.conv : to;
+import std.socket : Socket;
 
 class Worker : Thread
 {
     string request;
+    Socket client;
 
-    this(char[1024] datLength)
+    this(char[1024] datLength, Socket _client)
     {
         //Http parser package does not build on my pc rn so this will have to do in the meantime
         for (size_t i = 0; datLength[i] != '\n' && datLength[i] != '\0'; i++)
             request ~= datLength[i];
-        writeln(request);
+        this.client = _client;
+        writeln(datLength);
         super(&run);
     }
 
@@ -60,6 +63,8 @@ private:
 
     void sendResponse(string response)
     {
+        //TODO HTTP response
+        this.client.send(response);
         writeln(response);
     }
 }
